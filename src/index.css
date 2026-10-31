@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #FDF8F7;
+    --card-surface: #FFFBF9;
+    --card-border: #F3E3DF;
+    --card-glow: #FAF0EE;
+    --rose-primary: #B87D89;
+    --rose-plum: #5C3843;
+    --rose-blush: #D8A4AB;
+    --rose-petal: #E8C5CA;
+    --gold-champagne: #C9A875;
+    --gold-gilded: #E6D3B3;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--rose-plum);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-royal {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .font-pinyon {
+    font-family: 'Pinyon Script', cursive;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-cinzel-dec {
+    font-family: 'Cinzel Decorative', serif;
+  }
+}
+
+/* Paper Grain Overlay & Archival Rag Texture */
+.paper-texture {
+  background-image: 
+    radial-gradient(rgba(184, 125, 137, 0.07) 1px, transparent 0),
+    radial-gradient(rgba(201, 168, 117, 0.05) 1px, transparent 0);
+  background-size: 28px 28px, 42px 42px;
+}
+
+/* Luxury Gilded Gold Shimmer & Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B58C52 0%, #E6D3B3 25%, #C9A875 50%, #E6D3B3 75%, #9D753D 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineFoil 7s linear infinite;
+}
+
+@keyframes shineFoil {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.gold-foil-border {
+  border-image: linear-gradient(135deg, #C9A875, #F5E8D2, #C9A875, #9E7B44) 1;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #C9A875 0%, #F3E6D0 40%, #C9A875 70%, #B89258 100%);
+}
+
+.gold-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 70%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.75s ease;
+}
+.gold-shimmer-btn:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
+.rose-gold-border {
+  border-color: rgba(201, 168, 117, 0.45);
+}
+
+.rose-shadow {
+  box-shadow: 0 20px 50px -12px rgba(184, 125, 137, 0.18), 0 0 2px 1px rgba(243, 227, 223, 0.9);
+}
+
+.rose-inner-glow {
+  box-shadow: inset 0 0 35px rgba(250, 240, 238, 0.9);
+}
+
+/* Deckle Edge and Beveled Edge Layering */
+.deckle-card {
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(184, 125, 137, 0.08),
+    0 16px 36px rgba(184, 125, 137, 0.12),
+    0 32px 64px -16px rgba(92, 56, 67, 0.14),
+    inset 0 0 0 1px rgba(201, 168, 117, 0.35),
+    inset 0 0 24px rgba(250, 240, 238, 0.8);
+}
+
+/* 3D Envelope & Wax Seal Presets */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Custom Scrollbar for Luxury Aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FDF8F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8C5CA;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B87D89;
+}
+
+/* Waveform Bar Animation */
+@keyframes waveAnimation {
+  0%, 100% {
+    height: 4px;
+  }
+  50% {
+    height: 18px;
+  }
+}
+
+.animate-waveform-1 {
+  animation: waveAnimation 1.2s ease-in-out infinite;
+}
+.animate-waveform-2 {
+  animation: waveAnimation 1.2s ease-in-out 0.2s infinite;
+}
+.animate-waveform-3 {
+  animation: waveAnimation 1.2s ease-in-out 0.4s infinite;
+}
+.animate-waveform-4 {
+  animation: waveAnimation 1.2s ease-in-out 0.1s infinite;
+}
+.animate-waveform-5 {
+  animation: waveAnimation 1.2s ease-in-out 0.3s infinite;
+}
+
+/* Floating animation */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.4deg);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+/* Soft Fade In */
+@keyframes fadeInElevated {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInElevated {
+  animation: fadeInElevated 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
