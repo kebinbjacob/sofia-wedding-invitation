@@ -271,8 +271,6 @@ export const MonogramCrest: React.FC<{ className?: string; size?: number }> = ({
 
 // Traditional Auspicious Invocation Header with Lord Shiva & Goddess Parvati Sacred Round Logo
 export const AuspiciousHeader: React.FC<{ className?: string }> = ({ className = '' }) => {
-  const [useOriginalColor, setUseOriginalColor] = React.useState<boolean>(false);
-
   return (
     <div className={`text-center space-y-3 select-none ${className}`}>
       {/* Sacred Om Symbol in Gilded Frame */}
@@ -289,30 +287,15 @@ export const AuspiciousHeader: React.FC<{ className?: string }> = ({ className =
         {/* Glow halo behind logo */}
         <div className="absolute h-36 w-36 sm:h-44 sm:w-44 rounded-full bg-gradient-to-b from-[#C9A875]/20 via-[#B87D89]/10 to-transparent blur-xl pointer-events-none" />
 
-        <div className="group relative flex flex-col items-center">
-          <div className="relative h-32 w-32 sm:h-40 sm:w-40 rounded-full transition-transform duration-500 hover:scale-105 cursor-pointer shadow-[0_8px_25px_rgba(184,125,137,0.22)]"
-            onClick={() => setUseOriginalColor(!useOriginalColor)}
-            title="Tap to toggle between Card Palette and Original Artwork"
-          >
-            <img
-              src={useOriginalColor ? '/shiva_parvati_color_logo.png' : '/shiva_parvati_card_color_logo.png'}
-              alt="Lord Shiva and Goddess Parvati Divine Blessings"
-              className="h-full w-full object-contain rounded-full transition-all duration-700"
-            />
-          </div>
-
-          {/* Toggle pill below logo */}
-          <button
-            type="button"
-            onClick={() => setUseOriginalColor(!useOriginalColor)}
-            className="mt-2.5 inline-flex items-center gap-1.5 rounded-full border border-[#C9A875]/60 bg-[#FFFBF9] px-3 py-1 text-[10px] font-cinzel uppercase tracking-wider text-[#5C3843]/80 transition-colors hover:border-[#B87D89] hover:text-[#5C3843]"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#B87D89]" />
-            <span>{useOriginalColor ? 'View Card Palette' : 'View Original Colors'}</span>
-          </button>
+        <div className="relative h-32 w-32 sm:h-40 sm:w-40 rounded-full transition-transform duration-500 hover:scale-105 shadow-[0_8px_25px_rgba(184,125,137,0.22)]">
+          <img
+            src="/shiva_parvati_card_color_logo.png"
+            alt="Lord Shiva and Goddess Parvati Divine Blessings"
+            className="h-full w-full object-contain rounded-full"
+          />
         </div>
 
-        <div className="mt-2 text-center max-w-sm px-4">
+        <div className="mt-3 text-center max-w-sm px-4">
           <p className="font-serif text-xs font-semibold tracking-wider text-[#5C3843]">
             || ॐ नमः शिवाय ||
           </p>

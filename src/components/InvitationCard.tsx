@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Share2, MapPin, Calendar, Heart, FileText, Check, Sparkles, UserCheck, Maximize2, X } from 'lucide-react';
+import { Share2, MapPin, Calendar, Heart, FileText, Check, Sparkles, Maximize2, X } from 'lucide-react';
 import {
   BotanicalCorner,
   FloralDivider,
@@ -21,14 +21,10 @@ export const InvitationCard: React.FC<InvitationCardProps> = ({
   onScrollToLocation,
 }) => {
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
-  const [guestName, setGuestName] = useState<string>('');
-  const [isEditingGuest, setIsEditingGuest] = useState<boolean>(false);
   const [isZoomOpen, setIsZoomOpen] = useState<boolean>(false);
 
   const handleShare = () => {
-    const text = guestName
-      ? `Wedding Invitation for ${guestName}: Sofia S Nair & Akhil RV cordially invite you to celebrate their wedding on 11 & 12 November 2026.`
-      : 'Together with their families, Sofia S Nair & Akhil RV cordially invite you to celebrate their wedding on 11 & 12 November 2026.';
+    const text = 'Together with their families, Sofia S Nair & Akhil RV cordially invite you to celebrate their wedding on 11 & 12 November 2026.';
 
     if (navigator.share) {
       navigator
@@ -69,42 +65,6 @@ export const InvitationCard: React.FC<InvitationCardProps> = ({
           {/* Couple Monogram Wreath Crest with Gentle Breathing Floating Animation */}
           <div className="my-4 animate-float-gentle">
             <MonogramCrest size={135} />
-          </div>
-
-          {/* Personalized Guest Welcome Banner */}
-          <div className="my-2 inline-block">
-            {isEditingGuest ? (
-              <div className="flex items-center gap-2 rounded-full border border-[#C9A875] bg-[#FAF0EE] px-4 py-1.5 shadow-sm">
-                <input
-                  type="text"
-                  value={guestName}
-                  onChange={(e) => setGuestName(e.target.value)}
-                  placeholder="Enter your family name..."
-                  className="bg-transparent text-xs font-serif text-[#5C3843] focus:outline-none placeholder-[#5C3843]/50 w-48 sm:w-60"
-                  autoFocus
-                />
-                <button
-                  onClick={() => setIsEditingGuest(false)}
-                  className="text-[11px] font-cinzel uppercase tracking-wider text-[#B87D89] font-bold hover:underline"
-                >
-                  Save
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => setIsEditingGuest(true)}
-                className="group flex items-center gap-1.5 rounded-full border border-[#F3E3DF] bg-[#FAF0EE]/70 px-4 py-1 text-xs text-[#5C3843] transition-all hover:border-[#C9A875] hover:bg-white"
-                title="Click to personalize for your name/family"
-              >
-                <UserCheck className="h-3.5 w-3.5 text-[#C9A875]" />
-                <span className="font-serif italic">
-                  {guestName ? `Cordially welcoming: ${guestName}` : 'Personalize invitation for your family'}
-                </span>
-                <span className="text-[10px] text-[#B87D89] uppercase tracking-wider font-cinzel opacity-70 group-hover:opacity-100">
-                  {guestName ? '(Edit)' : '(Tap here)'}
-                </span>
-              </button>
-            )}
           </div>
 
           {/* "Together with their families" in royal calligraphy script */}
