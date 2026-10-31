@@ -269,67 +269,54 @@ export const MonogramCrest: React.FC<{ className?: string; size?: number }> = ({
   );
 };
 
-// Traditional Auspicious Invocation Header with Lord Shiva & Goddess Parvati Sacred Medallion
+// Traditional Auspicious Invocation Header with Lord Shiva & Goddess Parvati Sacred Round Logo
 export const AuspiciousHeader: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const [useOriginalColor, setUseOriginalColor] = React.useState<boolean>(false);
+
   return (
-    <div className={`text-center space-y-2 select-none ${className}`}>
+    <div className={`text-center space-y-3 select-none ${className}`}>
       {/* Sacred Om Symbol in Gilded Frame */}
-      <div className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-[#C9A875]/60 bg-gradient-to-b from-[#FFFBF9] to-[#FAF0EE] shadow-xs">
-        <span className="font-serif text-2xl text-[#C9A875] leading-none">ॐ</span>
+      <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[#C9A875]/70 bg-gradient-to-b from-[#FFFBF9] to-[#FAF0EE] shadow-[0_2px_8px_rgba(201,168,117,0.15)]">
+        <span className="font-serif text-2xl sm:text-3xl text-[#C9A875] leading-none">ॐ</span>
       </div>
 
-      <p className="font-serif italic text-sm tracking-widest text-[#5C3843]">
-        Om Ganapataye Namah
+      <p className="font-serif italic text-sm tracking-[0.2em] text-[#5C3843] font-medium">
+        || ॐ श्री गणेशाय नमः ||
       </p>
 
-      {/* Sacred Shiva & Parvati Artistic Medallion (from authentic card) */}
+      {/* Sacred Shiva & Parvati Artistic Round Logo in Card Color Palette */}
       <div className="relative mx-auto my-3 flex flex-col items-center justify-center">
-        <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-full border-2 border-[#C9A875]/70 bg-[#FFFBF9] p-1.5 shadow-[0_6px_20px_rgba(201,168,117,0.2)]">
-          {/* Decorative wreath framing */}
-          <div className="absolute -inset-2 rounded-full border border-dashed border-[#B87D89]/40 pointer-events-none" />
+        {/* Glow halo behind logo */}
+        <div className="absolute h-36 w-36 sm:h-44 sm:w-44 rounded-full bg-gradient-to-b from-[#C9A875]/20 via-[#B87D89]/10 to-transparent blur-xl pointer-events-none" />
 
-          {/* Shiva & Parvati Divine Motif SVG Illustration */}
-          <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C3843]">
-            {/* Background divine halo */}
-            <circle cx="50" cy="50" r="44" fill="#FAF0EE" />
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#C9A875" strokeWidth="0.8" strokeDasharray="2 2" />
-
-            {/* Sacred Trishul & Crescent Moon */}
-            <path d="M 38 18 L 38 48" stroke="#C9A875" strokeWidth="1.2" strokeLinecap="round" />
-            <path d="M 34 22 C 34 26 42 26 42 22" stroke="#C9A875" strokeWidth="1" fill="none" />
-            <path d="M 38 14 L 38 18" stroke="#C9A875" strokeWidth="1.4" />
-            <path d="M 46 16 C 49 19 49 25 45 27 C 49 26 51 22 49 17 Z" fill="#C9A875" />
-
-            {/* Shiva & Parvati Silhouette & Garland */}
-            {/* Shiva Head & Crown */}
-            <circle cx="43" cy="38" r="9" fill="#FFFBF9" stroke="#5C3843" strokeWidth="1.2" />
-            <path d="M 39 31 C 41 26 47 26 48 31" fill="#5C3843" />
-            <circle cx="43.5" cy="34" r="1" fill="#C9A875" />
-
-            {/* Parvati Head & Traditional Ornaments */}
-            <circle cx="57" cy="44" r="8" fill="#FFFBF9" stroke="#B87D89" strokeWidth="1.2" />
-            <path d="M 54 38 C 58 35 63 38 64 42" fill="#5C3843" />
-            <circle cx="57" cy="40" r="1" fill="#B87D89" />
-
-            {/* Sacred Garland uniting the Divine Couple */}
-            <path
-              d="M 35 56 C 42 66 58 66 65 56 C 58 60 42 60 35 56 Z"
-              fill="#FAF0EE"
-              stroke="#C9A875"
-              strokeWidth="1"
+        <div className="group relative flex flex-col items-center">
+          <div className="relative h-32 w-32 sm:h-40 sm:w-40 rounded-full transition-transform duration-500 hover:scale-105 cursor-pointer shadow-[0_8px_25px_rgba(184,125,137,0.22)]"
+            onClick={() => setUseOriginalColor(!useOriginalColor)}
+            title="Tap to toggle between Card Palette and Original Artwork"
+          >
+            <img
+              src={useOriginalColor ? '/shiva_parvati_color_logo.png' : '/shiva_parvati_card_color_logo.png'}
+              alt="Lord Shiva and Goddess Parvati Divine Blessings"
+              className="h-full w-full object-contain rounded-full transition-all duration-700"
             />
-            {/* Tiny floral dots on garland */}
-            <circle cx="41" cy="59" r="1.5" fill="#B87D89" />
-            <circle cx="50" cy="62" r="1.8" fill="#C9A875" />
-            <circle cx="59" cy="59" r="1.5" fill="#B87D89" />
+          </div>
 
-            {/* Greenish floral leaves base */}
-            <path d="M 32 68 C 40 64 45 70 50 68 C 55 70 60 64 68 68 C 60 74 40 74 32 68 Z" fill="#D8A4AB" opacity="0.45" />
-          </svg>
+          {/* Toggle pill below logo */}
+          <button
+            type="button"
+            onClick={() => setUseOriginalColor(!useOriginalColor)}
+            className="mt-2.5 inline-flex items-center gap-1.5 rounded-full border border-[#C9A875]/60 bg-[#FFFBF9] px-3 py-1 text-[10px] font-cinzel uppercase tracking-wider text-[#5C3843]/80 transition-colors hover:border-[#B87D89] hover:text-[#5C3843]"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[#B87D89]" />
+            <span>{useOriginalColor ? 'View Card Palette' : 'View Original Colors'}</span>
+          </button>
         </div>
 
-        <div className="mt-2 text-center">
-          <span className="font-serif italic text-xs tracking-wide text-[#B87D89]">
+        <div className="mt-2 text-center max-w-sm px-4">
+          <p className="font-serif text-xs font-semibold tracking-wider text-[#5C3843]">
+            || ॐ नमः शिवाय ||
+          </p>
+          <span className="font-serif italic text-xs tracking-wide text-[#B87D89] block mt-0.5">
             With the Divine Grace &amp; Blessings of Lord Shiva &amp; Goddess Parvati
           </span>
         </div>
